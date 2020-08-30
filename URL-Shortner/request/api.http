@@ -1,0 +1,6 @@
+POST http://localhost:3001/api/url/shorten
+Content-Type: application/json
+
+{
+    "longUrl": "https://www.cricbuzz.com/cricket-news/113985/james-anderson-looking-forward-to-tough-battle-with-virat-kohli-england-vs-india-cricket-team"
+}
