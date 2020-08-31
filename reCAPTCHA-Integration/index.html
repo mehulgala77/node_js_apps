@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Subscribe</h1>
+        <form id="subscribeForm">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name">
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email">
+            </div>     
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6Ld-pMUZAAAAAOFuaLBLQvZZvemIoauYn7KT7Mvy"></div>       
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script>
+
+        const form = document.getElementById('subscribeForm');
+
+        // Listen to form submit
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Fetch form details
+            const name = form['name'].value;
+            const email = form['email'].value;
+            const captcha = form['g-recaptcha-response'].value;
+
+            // Send verification request to backend
+            fetch('/subscribe', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    email,
+                    captcha
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                alert(data.msg);
+            });
+        });
+
+    </script>
+</body>
+
+</html>
