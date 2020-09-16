@@ -95,6 +95,7 @@ router.post('/register', async (req, res) => {
 // Login Handler
 router.post('/login', (req, res, next) => {
 
+    // Note: Invoke passport's local strategy
     passport.authenticate('local', {
         successRedirect: '/dashboard',
         failureRedirect: '/users/login',
@@ -105,7 +106,10 @@ router.post('/login', (req, res, next) => {
 
 // Logout handler 
 router.get('/logout', (req, res) => {
+
+    // Note: This method is given by passport
     req.logout()
+
     req.flash('success_msg', 'You are logged out.')
     res.redirect('/users/login')
 })

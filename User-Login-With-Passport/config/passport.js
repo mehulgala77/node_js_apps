@@ -6,6 +6,7 @@ const User = require('../models/user')
 
 const config = (passport) => {
 
+    // Note: we can pass passowrd field here as well
     const newLocalStrategy = new LocalStrategy({
         usernameField: 'email'
     }, async (email, password, done) => {
@@ -33,12 +34,16 @@ const config = (passport) => {
 
     })
 
+    // Note: Passport now has our local strategy instance.
     passport.use(newLocalStrategy)
 
+    // Note: To save user id in the session.
     passport.serializeUser((user, done) => {
         done(null, user._id);
     });
     
+    // Note: To extract user id from session, fine a user corresponding to it
+    // Passport will save it in "req.user" which is available to every route handler.
     passport.deserializeUser((id, done) => {
         User.findById(id, (err, user) => {
             done(err, user);

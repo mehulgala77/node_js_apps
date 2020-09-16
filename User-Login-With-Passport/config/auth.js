@@ -1,6 +1,7 @@
 
 const auth = (req, res, next) => {
 
+    // Note: This method is given by passport
     if (req.isAuthenticated()) {
         return next()
     }

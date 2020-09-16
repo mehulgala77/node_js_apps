@@ -34,6 +34,7 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({extended: true}))
 
 // Express Session
+// Note: To setup the session data. "Secret is used to secure cookies"
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -45,6 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Flash
+// Note: Flash messages
 app.use(flash())
 
 // Global Variables
@@ -58,6 +60,7 @@ app.use((req, res, next) => {
 })
 
 // Routers
+// Note: How to attach routes to specific base routes
 app.use('/', require('./routes/index'))
 app.use('/users', require('./routes/user'))
 
