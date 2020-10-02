@@ -11,7 +11,7 @@ app.get('/createdb', (req, res) => {
     db.query(sql, (err, result) => {
 
         if (err) {
-            console.log(err);
+            console.log(err);   
             return res.sendStatus(500);  
         } 
 

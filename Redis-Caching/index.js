@@ -8,6 +8,10 @@ const REDIS_PORT = 6379
 
 const redisClient = redis.createClient(REDIS_PORT)
 
+redisClient.on('connect', () => {
+    console.log('Successfully Connected to Redis');
+})
+
 const app = express()
 
 // Two benefits
