@@ -74,8 +74,8 @@ app.use(methodOverride(function (req, res) {
       let method = req.body._method
       delete req.body._method
       return method
-    }
-  }))
+    }  
+}))
 
 // Routes
 app.use('/', require('./routes/index'))

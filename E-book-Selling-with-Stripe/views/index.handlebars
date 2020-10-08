@@ -1,0 +1,32 @@
+<section class="py-5">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <h1 class="display-3 mt-3 pt-5">
+        Python Crash Course
+      </h1>
+      <p class="lead">Learn python from scratch</p>
+      <form action="/charge" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" 
+          class="stripe-button"
+          data-key="{{stripePublishableKey}}"
+          data-amount="1000"
+          data-name="Python Crash Course"
+          data-description="Ebook written by Eric Matthes"
+          data-image="/img/marketplace.jpg"
+          data-locale="auto">
+        </script>
+        <script>
+          // Hide default stripe button
+          document.getElementsByClassName('stripe-button-el')[0].style.display = 'none';
+        </script>
+        <button type="submit" class="btn btn-dark text-white btn-lg">
+            Purchase For $10
+        </button>
+      </form>
+    </div>
+    <div class="col-md-6" style="max-width: 400px;">
+      <img src="/img/book.jpg" alt="" class="img-fluid">
+    </div>
+  </div>
+</section>
