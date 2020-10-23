@@ -67,6 +67,6 @@ module.exports = passportConfig
 // 7. Click on "Credentials in APIs & Services" link
 // 8. Click on "Create Credentials"
 // 9. Click on "OAuth Client Id"
-// 10. It may ask you to set up app name on the concent page.
+// 10. It may ask you to set up app name on the consent page.
 // 11. Select "Web app" as the application type.
 // 12. Add Redirect URL to "http://localhost:3001/auth/google/callback"
