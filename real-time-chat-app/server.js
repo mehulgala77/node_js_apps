@@ -55,7 +55,7 @@ io.on('connection', (socket) => {
   // Runs when a client disconnects.
   socket.on('disconnect', () => {
     const user = removeUser(socket.id);
-    if (user) {
+    if (user) {      
       io.to(user.room).emit(
         'message', 
         formatMessage(botName, `${user.username} has left the chat`)
@@ -68,7 +68,6 @@ io.on('connection', (socket) => {
       });
     }
   
-    // This will broadcast the messsage to all the clients.
   });
 });
 
